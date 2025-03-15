@@ -4,10 +4,10 @@ def getInput():
     resources = int(input("Enter number of Resources: "))
 
     print("Enter Max matrix (each row for a process):")
-    maxMatrix = [list(map(int, input().split())) for _ in range(processes)]
+    maxMatrix = [list(map(int, input().split())) for i in range(processes)]
 
     print("Enter Allocation matrix (each row for a process):")
-    allocMatrix = [list(map(int, input().split())) for _ in range(processes)]
+    allocMatrix = [list(map(int, input().split())) for i in range(processes)]
 
     available = list(map(int, input("Enter Available resources: ").split()))
 
