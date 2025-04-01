@@ -5,7 +5,7 @@ def accept():
     FrameSize = int(input("Enter number of FrameSize: "))
     return pageStr, FrameSize
 
-def LRU(pageStr, FrameSize):
+def MFU(pageStr, FrameSize):
     memory = []                  
     freq = defaultdict(int)      
     pageFault = 0                   
@@ -15,16 +15,17 @@ def LRU(pageStr, FrameSize):
             if len(memory) < FrameSize:
                 memory.append(page) 
             else:
-                least_used = max(memory, key=lambda x: freq[x])
-                memory.remove(least_used)
+                # Find the most frequently used page instead of least used
+                most_used = max(memory, key=lambda x: freq[x])
+                memory.remove(most_used)
                 memory.append(page)
             pageFault += 1
         
         freq[page] += 1          
-        print(f"content of  Memory: {memory} → Freq: {dict(freq)}")
+        print(f"content of Memory: {memory} → Freq: {dict(freq)}")
     
     print(f"\nTotal pageFault: {pageFault}")
 
 
 pageStr, FrameSize = accept()
-LRU(pageStr, FrameSize)
+MFU(pageStr, FrameSize)
